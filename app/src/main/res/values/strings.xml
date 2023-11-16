@@ -15,7 +15,7 @@
     <string name="subtotal_price">Subtotal : RP %s</string>
     <string name="total_price">Total %s</string>
     <string name="btn_submit">btn_submit</string>
-    <string name="nama">nama</string>
+    <string name="namaPelanggan">nama</string>
     <string name="alamat">alamat</string>
     <string name="noTelp">noTelp</string>
 </resources>
