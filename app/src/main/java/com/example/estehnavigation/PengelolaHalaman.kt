@@ -2,6 +2,7 @@
     ExperimentalMaterial3Api::class)
 package com.example.navigasi
 
+import CustomDetailsScreen
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -35,8 +36,10 @@ import com.example.estehnavigation.R
 enum class PengelolaHalaman {
     Home,
     Rasa,
-    Summary
+    Summary,
+    CustomersDetails,
 }
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EsJumboAppBar(
     bisaNavigasiBack: Boolean,
@@ -78,9 +81,21 @@ fun EsJumbooApp(
             composable(route = PengelolaHalaman.Home.name) {
                 HalamanHome(
                     onNextButtonClicked = {
-                        navController.navigate(PengelolaHalaman.Rasa.name)
+                        navController.navigate(PengelolaHalaman.CustomersDetails.name)
                     })
             }
+            composable(route = PengelolaHalaman.CustomersDetails.name) {
+                CustomDetailsScreen(
+                    onConfirmButtonClicked = { nama, noTelp, alamat ->
+                        viewModel.setCustomersDetails(nama, noTelp, alamat)
+                        navController.navigate(PengelolaHalaman.Rasa.name)
+                    },
+                    onCancelButtonClicked = {
+                        navController.navigate(PengelolaHalaman.Home.name)
+                    },
+                )
+            }
+
             composable(route = PengelolaHalaman.Rasa.name){
                 val context = LocalContext.current
                 HalamanSatu(
