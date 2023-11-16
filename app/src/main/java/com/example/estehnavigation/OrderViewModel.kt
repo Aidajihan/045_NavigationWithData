@@ -40,5 +40,12 @@ import java.text.NumberFormat
 
             return NumberFormat.getNumberInstance().format(kalkulasiharga)
         }
+        fun setContact(listData:MutableList<String>){
+            _stateUI.value = OrderUiState(
+                nama = listData[0],
+                alamat = listData[1],
+                noTelp = listData[2],
+            )
+        }
 
     }
