@@ -25,36 +25,38 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun HalamanSatu(
     onSubmitButtonClicked: (MutableList<String>) -> Unit,
-){
-    var nama by rememberSaveable { mutableStateOf("")}
-    var noHp by remember { mutableStateOf("")}
-    var alamat by remember { mutableStateOf("")}
+) {
+    var nama by rememberSaveable { mutableStateOf("") }
+    var noHp by remember { mutableStateOf("") }
+    var alamat by remember { mutableStateOf("") }
     var listData: MutableList<String> = mutableListOf(nama, noHp, alamat)
 
-    Column (
+    Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center
-    ){
+    ) {
 
         OutlinedTextField(
-            value = nama   ,
-            onValueChange = { nama = it},
-            label = {Text(text = "Nama")})
+            value = nama,
+            onValueChange = { nama = it },
+            label = { Text(text = "Nama") })
         OutlinedTextField(
             value = noHp,
-            onValueChange = {noHp = it},
-            label = { Text(text = "noHp")})
+            onValueChange = { noHp = it },
+            label = { Text(text = "noHp") })
         OutlinedTextField(
             value = alamat,
-            onValueChange = {alamat = it},
-            label = { Text(text = "alamat")})
+            onValueChange = { alamat = it },
+            label = { Text(text = "alamat") })
         Spacer(modifier = Modifier.padding(16.dp))
         Button(onClick = { onSubmitButtonClicked(listData) }) {
-            Text(text = stringResource(id = R.string.btn_submot))
+            Text(text = stringResource(id = R.string.btn_submit))
 
         }
-
     }
-
 }
+
+
+
+
