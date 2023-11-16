@@ -15,6 +15,16 @@ import java.text.NumberFormat
         private val _stateUI = MutableStateFlow(OrderUiState())
         val  stateUI: StateFlow<OrderUiState> = _stateUI.asStateFlow()
 
+        fun setCustomersDetails(nama : String, nomor: String, alamat: String){
+            _stateUI .update { stateSaatIni ->
+                stateSaatIni.copy(
+                    namaPelanggan = nama,
+                    nomorTelepon = nomor,
+                    alamat = alamat
+                )
+            }
+        }
+
         fun setJumlah(jmlEsTeh:Int) {
             _stateUI.update { stateSaatIni ->
                 stateSaatIni.copy(
@@ -42,9 +52,9 @@ import java.text.NumberFormat
         }
         fun setContact(listData:MutableList<String>){
             _stateUI.value = OrderUiState(
-                nama = listData[0],
+                namaPelanggan = listData[0],
                 alamat = listData[1],
-                noTelp = listData[2],
+                nomorTelepon = listData[2],
             )
         }
 
